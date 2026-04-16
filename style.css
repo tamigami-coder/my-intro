@@ -1,0 +1,136 @@
+/* style.css */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+/* Cooler, slightly masculine gradient background */
+.bg-gradient-animate {
+    background: linear-gradient(-45deg, #f1f5f9, #e2e8f0, #f8fafc, #dbeafe);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+}
+
+/* On-Load Animation (For Hero elements) */
+.animate-on-load {
+    animation: loadFadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.animate-on-load.delay-1000 {
+    animation-delay: 800ms;
+}
+
+@keyframes loadFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Scroll Animation (Deeper float with blur effect) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(60px);
+    filter: blur(12px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 1s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
+}
+
+.animate-on-scroll.delay-100 { transition-delay: 150ms; }
+.animate-on-scroll.delay-200 { transition-delay: 300ms; }
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Toast Notifications */
+.toast-enter {
+    animation: slideInRight 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.toast-leave {
+    animation: fadeOutDown 0.4s ease-in forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(20px) scale(0.95);
+        opacity: 0;
+    }
+}
+
+/* Modal states */
+#completion-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#completion-modal.show #modal-content {
+    transform: scale(1);
+}
+
+.secret-fragment.found {
+    pointer-events: none;
+}
+
+/* Easter Egg Animation: Twitch ONLY on Hover */
+@keyframes hoverTwitch {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(2deg) scale(1.05); }
+    75% { transform: rotate(-2deg) scale(0.95); }
+}
+
+.secret-fragment:not(.found) {
+    transition: filter 0.3s ease, color 0.3s ease;
+}
+
+.secret-fragment:hover:not(.found) {
+    animation: hoverTwitch 0.4s ease-in-out infinite;
+    transform-origin: center;
+}

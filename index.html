@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamigami | Brutal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="brutalism.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="relative">
+
+    <!-- Giant Scrolling Background Text -->
+    <div class="marquee-container">
+        <span class="marquee-text">TAMIGAMI TECH ENTHUSIAST PORTFOLIO 2026 NO RULES</span>
+    </div>
+
+    <!-- Header / Nav -->
+    <header class="fixed top-6 right-6 md:top-10 md:right-10 z-50">
+        <nav class="brutal-box px-4 py-2 flex gap-4 text-sm md:text-base font-black uppercase tracking-widest bg-[#ffeb3b]">
+            <a href="#about" class="hover:underline decoration-4 underline-offset-4">Identity</a>
+            <a href="#ai-vision" class="hover:underline decoration-4 underline-offset-4">Vision</a>
+            <a href="#goals" class="hover:underline decoration-4 underline-offset-4">Target</a>
+        </nav>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 pt-32 pb-40 relative z-10 flex flex-col gap-32">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[85vh] w-full relative brutal-reveal mt-10 overflow-hidden md:overflow-visible flex items-center justify-center">
+            
+            <div class="sticky-note top-10 left-4 md:left-20 rotate-[-5deg] z-40">
+                <span class="text-sm font-sans block mb-1">Memo</span>
+                <span class="secret-fragment" data-id="1">★</span>
+            </div>
+
+            <!-- Avatar Position Wrapper placed top-left relative to center -->
+            <div class="absolute top-1/2 left-1/2 z-10 -rotate-6 transform -translate-x-[150%] -translate-y-[80%] md:-translate-x-[180%] md:-translate-y-[80%]">
+                
+                <!-- Secret 2: Fake Stamp completely placed on the bottom layer (Layer 0) -->
+                <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-red-500 rounded-full border-[3px] border-black text-white font-black flex flex-col items-center justify-center rotate-[20deg] cursor-pointer secret-fragment z-0 text-sm overflow-hidden hover:rotate-12 transition-transform duration-200" data-id="2">
+                    <span>APRV</span>
+                </div>
+                
+                <!-- The actual Square Frame (Layer 10) covering the stamp -->
+                <div class="bg-white border-8 border-black shadow-[16px_16px_0px_#000] relative z-10 flex">
+                    <img src="avatar.png" alt="Profile Avatar" class="w-48 h-48 md:w-72 md:h-72 rounded-full object-cover relative z-20 border-4 border-black">
+                </div>
+            </div>
+            
+            <!-- Text perfectly centered in Hero -->
+            <div class="absolute top-1/2 left-1/2 z-20 pointer-events-none text-center transform -translate-x-1/2 -translate-y-1/2 w-full flex flex-col items-center">
+                <h1 class="text-[5rem] md:text-[11rem] font-['Anton'] leading-none text-black uppercase drop-shadow-[12px_12px_0_#ffeb3b]">
+                    TAMIGAMI
+                </h1>
+                <div class="inline-block bg-black text-white px-6 py-2 text-2xl md:text-3xl font-bold uppercase tracking-[0.2em] mt-2 brutal-box rotate-[-2deg] pointer-events-auto w-fit">
+                    Tech Enthusiast
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="scroll-mt-32 brutal-reveal relative z-20">
+            <div class="brutal-box p-8 md:p-12 relative bg-[#4ade80] rotate-[1deg]">
+                <!-- Cutout Coupon inside About info -->
+                <div class="coupon-box bg-white rotate-[-2deg] p-6 shadow-[4px_4px_0_#000] md:w-1/2 ml-auto z-10 relative">
+                    <div class="absolute top-2 left-2 text-[10px] font-bold uppercase text-gray-800">✂ Cut here</div>
+                    <h3 class="text-xl font-black uppercase mb-2 border-b-4 border-black pb-1 inline-block text-black">Affiliation</h3>
+                    <p class="text-2xl font-black text-black">千葉工業大学 / 3年生</p>
+                    <!-- Secret 3: Clickable scissor icon -->
+                    <span class="absolute bottom-2 right-2 text-2xl secret-fragment" data-id="3">✂️</span>
+                </div>
+
+                <div class="mt-8 md:w-2/3 bg-white border-4 border-black p-6 shadow-[8px_8px_0px_#ffeb3b] relative z-20">
+                    <h3 class="text-2xl font-black uppercase mb-4 border-b-4 border-black pb-2 inline-block text-blue-600">Interests</h3>
+                    <p class="text-xl font-bold leading-relaxed">
+                        プログラミングに強い関心あり！！<br>
+                        AIを駆使した画期的なアプローチを実践・探求し、Web技術の最前線へ挑戦します。
+                    </p>
+                </div>
+
+                <!-- Hobby Block -->
+                <div class="mt-6 md:w-3/4 ml-auto bg-[#ff9ee5] border-4 border-black p-6 shadow-[8px_8px_0px_#000] relative z-30 rotate-[2deg]">
+                    <h3 class="text-2xl font-black uppercase mb-2 border-b-4 border-black pb-1 inline-block">My Weapon</h3>
+                    <p class="text-2xl font-bold leading-relaxed">
+                        生粋のゲーマー🎮<br>
+                        FPSからスローライフまで幅広くやってます！
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Vision Section -->
+        <section id="ai-vision" class="scroll-mt-32 brutal-reveal">
+            <h2 class="text-6xl md:text-8xl font-['Anton'] mb-8 uppercase bg-black text-white inline-block px-4 py-2 brutal-box shadow-[12px_12px_0_#ff3b30] rotate-[-2deg]">AI Vision</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12 mt-8">
+                <!-- Card 1 -->
+                <div class="brutal-box flex-1 bg-white p-8 hover:bg-[#ff9ee5]">
+                    <h3 class="font-black text-3xl mb-4 uppercase underline decoration-8 decoration-black">Growth.</h3>
+                    <p class="text-xl font-bold leading-loose">
+                        問いを投げるたび、新しい視点を与えてくれる。<br>
+                        まさに「共に成長する最強のパートナー」。
+                    </p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="brutal-box flex-1 bg-white p-8 hover:bg-blue-300 relative">
+                    <h3 class="font-black text-3xl mb-4 uppercase underline decoration-8 decoration-black">Balance.</h3>
+                    <p class="text-xl font-bold leading-loose">
+                        ただ頼りきりになるのはNG。<br>
+                        自分の思考との「適切な線引きとバランス」を保ちながら向き合いたい。
+                    </p>
+                    
+                    <!-- Secret 4: A random black block with hidden text -->
+                    <div class="secret-fragment bg-black text-black hover:text-white px-2 py-1 mt-4 inline-block font-mono text-sm cursor-help" data-id="4">
+                        [REDACTED DATA]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Section -->
+        <section id="goals" class="scroll-mt-32 brutal-reveal relative">
+            
+            <!-- Sticky note overlapping the box -->
+            <div class="sticky-note -top-8 right-0 md:right-20 rotate-[10deg] z-20">
+                アイデアを形に！✏️
+            </div>
+
+            <div class="brutal-box p-10 md:p-16 bg-[#ffeb3b] text-center border-8">
+                <h2 class="text-5xl md:text-7xl font-black uppercase mb-8 break-all">Action & Goal</h2>
+                
+                <p class="text-2xl md:text-3xl font-black leading-relaxed">
+                    AIをハブとして常に最新技術を展開・吸収し、<br>
+                    <span class="bg-white px-2 mt-2 inline-block border-4 border-black rotate-[1deg] shadow-[4px_4px_0_#000]">今までに見たこともない衝撃的なWebアプリケーション</span><br>
+                    を自らの手で爆速で創り出す！
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-20 border-t-8 border-black pt-8 brutal-reveal">
+            <div class="flex flex-col md:flex-row justify-between items-center font-['Anton'] text-2xl uppercase">
+                <p>2026 Tamigami</p>
+                <!-- Secret 5: A fake trademark / copyright symbol -->
+                <p>All Rights Reserved <span class="secret-fragment text-3xl cursor-alias text-red-500" data-id="5">®</span></p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="fixed bottom-6 right-6 px-4 py-3 bg-[#ffeb3b] text-black font-['Anton'] text-2xl brutal-box hover:bg-[#4ade80] opacity-0 pointer-events-none z-50">
+        UP ↑
+    </button>
+
+    <!-- Completion Modal -->
+    <div id="completion-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] transition-opacity duration-300 opacity-0 pointer-events-none p-4">
+        <div class="glass-card w-full max-w-lg p-10 text-center transform scale-95 transition-transform duration-300 brutal-box">
+            
+            <h2 class="text-5xl font-['Anton'] text-black mb-4 uppercase drop-shadow-[4px_4px_0_#ff3b30]">Access Granted</h2>
+            <p class="text-black mb-8 text-xl font-bold bg-[#4ade80] inline-block px-4 py-1 border-2 border-black">みつけてくれてありがとう!!</p>
+
+            <div class="border-4 border-black p-6 mb-8 bg-white text-center relative rotate-[2deg] shadow-[8px_8px_0_#000]">
+                <span class="absolute -top-4 -left-4 bg-black text-white px-2 py-1 font-bold transform -rotate-6">SECRET</span>
+                <p class="text-xl md:text-2xl mt-4 font-black leading-relaxed">
+                    全てのギミックを解き明かした<br>
+                    あなたに最大限のRESPECTを！
+                </p>
+            </div>
+
+            <button id="close-modal" class="brutal-button w-full py-4 text-2xl">
+                CLOSE SHIT DOWN
+            </button>
+        </div>
+    </div>
+
+    <!-- Script tags moved to the bottom -->
+    <script src="brutalism.js"></script>
+</body>
+</html>

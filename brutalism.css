@@ -1,0 +1,147 @@
+/* brutalism.css */
+
+/* Fonts: Anton for Impact, Yomogi for Handwriting, Inter for base */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Yomogi&family=Inter:wght@600;900&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f4f4f0; /* Off-white paper look */
+    color: #111;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    background-image: radial-gradient(#d1d1cf 1px, transparent 1px); /* Dot grid */
+    background-size: 20px 20px;
+}
+
+/* 常に矢印カーソルを保つ（文字Iビームを出さない） */
+* {
+    cursor: default;
+}
+
+/* クリック可能な要素は指マークに戻す */
+a, button, .cursor-pointer, .brutal-button, .secret-fragment {
+    cursor: pointer !important;
+}
+
+
+/* Brutalist UI Borders & Shadows */
+.brutal-box {
+    background-color: #fff;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0px 0px #000;
+    transition: all 0.2s ease;
+}
+
+.brutal-box:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px 0px #000;
+}
+
+.brutal-button {
+    background-color: #ffeb3b; /* Vibrant Yellow */
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px 0px #000;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.brutal-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px #000;
+}
+
+/* Marquee Background */
+.marquee-container {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    width: 100vw;
+    z-index: -1;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0.08;
+    transform-origin: center;
+}
+
+.marquee-text {
+    font-family: 'Anton', sans-serif;
+    font-size: 20vw;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 4px #000;
+    display: inline-block;
+    will-change: transform;
+}
+
+/* Analog Note / Sticky */
+.sticky-note {
+    background-color: #ff9ee5; /* Vibrant Pink */
+    padding: 10px 15px;
+    font-family: 'Yomogi', cursive;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0 0 #000;
+    transform: rotate(-3deg);
+    position: absolute;
+    z-index: 10;
+}
+
+/* Cutout Coupon */
+.coupon-box {
+    border: 4px dashed #000;
+    background-color: #fff;
+    position: relative;
+    padding: 20px;
+}
+
+/* Custom Brutalist Tooltip */
+.secret-fragment {
+    position: relative;
+    cursor: help;
+}
+
+.secret-fragment.found {
+    pointer-events: none;
+    opacity: 0.3 !important;
+    text-decoration: line-through;
+    filter: invert(1);
+}
+
+
+
+/* Glitch animation on hover for secrets */
+@keyframes glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}
+
+.secret-fragment:not(.found):hover {
+    animation: glitch 0.2s linear infinite;
+    background-color: #ff3b30;
+    color: #fff !important;
+}
+
+/* Modal styles for brutalism */
+#completion-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#completion-modal .glass-card {
+    background: #fff;
+    border: 6px solid #000;
+    box-shadow: 20px 20px 0 0 #ffeb3b;
+    border-radius: 0;
+    backdrop-filter: none;
+}
