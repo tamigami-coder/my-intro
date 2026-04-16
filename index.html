@@ -27,33 +27,33 @@
     <main class="max-w-5xl mx-auto px-4 pt-32 pb-40 relative z-10 flex flex-col gap-32">
         
         <!-- Hero Section -->
-        <section id="hero" class="min-h-[85vh] w-full relative brutal-reveal mt-10 overflow-hidden md:overflow-visible flex items-center justify-center">
+        <section id="hero" class="min-h-[85vh] w-full relative brutal-reveal mt-10 flex flex-col md:block items-center justify-center overflow-x-hidden md:overflow-visible p-4">
             
             <div class="sticky-note top-10 left-4 md:left-20 rotate-[-5deg] z-40">
                 <span class="text-sm font-sans block mb-1">Memo</span>
                 <span class="secret-fragment" data-id="1">★</span>
             </div>
 
-            <!-- Avatar Position Wrapper placed top-left relative to center -->
-            <div class="absolute top-1/2 left-1/2 z-10 -rotate-6 transform -translate-x-[150%] -translate-y-[80%] md:-translate-x-[180%] md:-translate-y-[80%]">
+            <!-- Avatar Wrapper: Relative on mobile (stacks), Absolute on desktop -->
+            <div class="relative md:absolute md:top-1/2 md:left-1/2 z-10 -rotate-6 transform md:-translate-x-[180%] md:-translate-y-[80%] mb-12 md:mb-0">
                 
-                <!-- Secret 2: Fake Stamp completely placed on the bottom layer (Layer 0) -->
+                <!-- Secret 2: Fake Stamp -->
                 <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-red-500 rounded-full border-[3px] border-black text-white font-black flex flex-col items-center justify-center rotate-[20deg] cursor-pointer secret-fragment z-0 text-sm overflow-hidden hover:rotate-12 transition-transform duration-200" data-id="2">
                     <span>APRV</span>
                 </div>
                 
-                <!-- The actual Square Frame (Layer 10) covering the stamp -->
+                <!-- The actual Square Frame -->
                 <div class="bg-white border-8 border-black shadow-[16px_16px_0px_#000] relative z-10 flex">
                     <img src="avatar.png" alt="Profile Avatar" class="w-48 h-48 md:w-72 md:h-72 rounded-full object-cover relative z-20 border-4 border-black">
                 </div>
             </div>
             
-            <!-- Text perfectly centered in Hero -->
-            <div class="absolute top-1/2 left-1/2 z-20 pointer-events-none text-center transform -translate-x-1/2 -translate-y-1/2 w-full flex flex-col items-center">
-                <h1 class="text-[5rem] md:text-[11rem] font-['Anton'] leading-none text-black uppercase drop-shadow-[12px_12px_0_#ffeb3b]">
+            <!-- Text Wrapper: Relative on mobile, Absolute on desktop -->
+            <div class="relative md:absolute md:top-1/2 md:left-1/2 z-20 pointer-events-none text-center transform md:-translate-x-1/2 md:-translate-y-1/2 w-full flex flex-col items-center">
+                <h1 class="text-[4rem] md:text-[11rem] font-['Anton'] leading-none text-black uppercase drop-shadow-[8px_8px_0_#ffeb3b] md:drop-shadow-[12px_12px_0_#ffeb3b]">
                     TAMIGAMI
                 </h1>
-                <div class="inline-block bg-black text-white px-6 py-2 text-2xl md:text-3xl font-bold uppercase tracking-[0.2em] mt-2 brutal-box rotate-[-2deg] pointer-events-auto w-fit">
+                <div class="inline-block bg-black text-white px-6 py-2 text-xl md:text-3xl font-bold uppercase tracking-[0.2em] mt-2 brutal-box rotate-[-2deg] pointer-events-auto w-fit">
                     Tech Enthusiast
                 </div>
             </div>
