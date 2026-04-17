@@ -200,9 +200,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('adminPasswordInput');
 
     // Moe-Counterの設定（数値データ取得用）
-    async function handleVisitorCounter() {
+    let cachedVisitorCount = null; // 重複カウント防止用のキャッシュ変数
+
+    async function handleVisitorCounter(forceFetch = false) {
         const visitorCountEl = document.getElementById('visitorCount');
         if (!visitorCountEl) return;
+
+        // キャッシュがあり、強制取得でない場合はキャッシュを表示して終了
+        if (cachedVisitorCount !== null && !forceFetch) {
+            visitorCountEl.innerText = cachedVisitorCount.toLocaleString();
+            return cachedVisitorCount;
+        }
 
         try {
             // Moe-Counterの数値データ取得用エンドポイント (/record/)
@@ -213,10 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             
             // data.num に現在のカウント数が含まれます
-            if (visitorCountEl && data.num !== undefined) {
-                visitorCountEl.innerText = data.num.toLocaleString();
+            if (data.num !== undefined) {
+                cachedVisitorCount = data.num; // キャッシュに保存
+                if (visitorCountEl) {
+                    visitorCountEl.innerText = cachedVisitorCount.toLocaleString();
+                }
             }
-            return data.num;
+            return cachedVisitorCount;
         } catch (error) {
             console.error("Moe-Counter Error:", error);
             if (visitorCountEl) visitorCountEl.innerText = "---"; 
@@ -224,8 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 読み込み時に最新の来場者数を取得
-    handleVisitorCounter();
+    // 読み込み時に最新の来場者数を取得（カウントアップを伴う）
+    handleVisitorCounter(true);
 
     // パスワード "1234" の SHA-256 ハッシュ
     const ADMIN_PASS_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
@@ -293,8 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleElement(adminDashboardModal, true);
                 passwordInput.value = '';
                 
-                // 管理者認証成功のログ（数値表示を最新に更新）
-                handleVisitorCounter();
+                // 管理者認証成功のログ（カウントを増やさないようキャッシュを利用）
+                handleVisitorCounter(false);
                 console.log('ADMIN ACCESS GRANTED');
             } else {
                 alert('ACCESS DENIED: INVALID KEY');
