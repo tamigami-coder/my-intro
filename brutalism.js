@@ -492,6 +492,49 @@ document.addEventListener('DOMContentLoaded', () => {
                     * { cursor: crosshair !important; }
                 `;
                 break;
+            case 'cute':
+                appendLog('APPLYING MUTATION: KAWAII');
+                css = `
+                    body { background-color: #fff0f5 !important; color: #ff69b4 !important; font-family: 'Yomogi', cursive !important; background-image: radial-gradient(#ffb6c1 2px, transparent 2px) !important; background-size: 30px 30px !important;}
+                    .brutal-box, .coupon-box { background-color: #fff !important; border: 4px solid #ffb6c1 !important; box-shadow: 6px 6px 0px #ffb6c1 !important; color: #db2777 !important; border-radius: 20px !important; }
+                    [class*="bg-[#"], .bg-white { background-color: #ffe4e1 !important; color: #ff1493 !important; border-color: #ffb6c1 !important; box-shadow: 4px 4px 0px #ffb6c1 !important; border-radius: 15px !important;}
+                    h1, h2, h3 { color: #ff1493 !important; text-shadow: 2px 2px 0 #fff !important; drop-shadow: none !important;}
+                    .marquee-container { background-color: #ffb6c1 !important; color: #fff !important; border-top: 4px dashed #ff69b4; border-bottom: 4px dashed #ff69b4; opacity: 0.8 !important;}
+                    .text-black, .text-gray-800 { color: #db2777 !important; }
+                    .border-black { border-color: #ff69b4 !important; }
+                    img { border-radius: 50% !important; border-color: #ffb6c1 !important; }
+                    .sticky-note { background-color: #fff !important; border: 2px solid #ffb6c1 !important; color: #ff1493 !important; border-radius: 10px !important;}
+                `;
+                break;
+            case 'jp':
+                appendLog('APPLYING MUTATION: WAFU (JAPANESE TRADITIONAL)');
+                css = `
+                    body { background-color: #fdf5e6 !important; color: #333 !important; font-family: 'Yu Mincho', 'Mincho', serif !important; background-image: none !important; }
+                    .brutal-box, .coupon-box { background-color: #fff !important; border: 1px solid #333 !important; box-shadow: none !important; color: #333 !important; border-radius: 0 !important; }
+                    [class*="bg-[#"], .bg-white { background-color: #fff !important; color: #333 !important; border-color: #333 !important; box-shadow: none !important; border-radius: 0 !important;}
+                    h1, h2, h3 { color: #b91c1c !important; text-shadow: none !important; drop-shadow: none !important; font-weight: normal !important; letter-spacing: 0.1em; }
+                    .marquee-container { background-color: #b91c1c !important; color: #fff !important; border: none; opacity: 1 !important;}
+                    .marquee-text { font-family: 'Yu Mincho', 'Mincho', serif !important; -webkit-text-stroke: 0 !important;}
+                    .text-black, .text-gray-800 { color: #333 !important; }
+                    .border-black { border-color: #333 !important; border-width: 1px !important; }
+                    img { border-radius: 50% !important; border: 4px solid #b91c1c !important; }
+                    .sticky-note { background-color: #fff !important; border: 1px solid #b91c1c !important; box-shadow: none !important; transform: none !important; color: #b91c1c !important;}
+                `;
+                break;
+            case 'game':
+                appendLog('APPLYING MUTATION: RETRO_RPG');
+                css = `
+                    body { background-color: #000 !important; color: #fff !important; font-family: 'Courier New', monospace !important; background-image: none !important; }
+                    .brutal-box, .coupon-box { background-color: #00008b !important; border: 4px solid #fff !important; box-shadow: none !important; color: #fff !important; border-radius: 4px !important; }
+                    [class*="bg-[#"], .bg-white { background-color: #00008b !important; color: #fff !important; border-color: #fff !important; box-shadow: none !important; border-radius: 4px !important;}
+                    h1, h2, h3 { color: #ffd700 !important; text-shadow: 2px 2px 0 #000 !important; drop-shadow: none !important; letter-spacing: 2px; }
+                    .marquee-container { background-color: #000 !important; color: #fff !important; border-top: 2px dashed #fff; border-bottom: 2px dashed #fff; opacity: 1 !important;}
+                    .text-black, .text-gray-800 { color: #fff !important; }
+                    .border-black { border-color: #fff !important; }
+                    img { filter: contrast(150%) grayscale(30%) !important; border-radius: 0 !important; border: 4px solid #fff !important; image-rendering: pixelated; }
+                    .sticky-note { background-color: #00008b !important; color: #ffd700 !important; border: 4px solid #fff !important; transform: none !important;}
+                `;
+                break;
             case 'reset':
                 appendLog('RESTORING ORIGINAL DOM STRUCTURE...');
                 css = ''; 
@@ -528,10 +571,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         applyMutation('dark');
                     } else if (/サイバー|ネオン|cyber|未|ハッカー|hack/.test(lowerVal)) {
                         applyMutation('cyber');
+                    } else if (/可愛|かわい|キュート|cute|ピンク|pink/.test(lowerVal)) {
+                        applyMutation('cute');
+                    } else if (/日本|和風|和|japan|wa|伝統/.test(lowerVal)) {
+                        applyMutation('jp');
+                    } else if (/ゲーム|rpg|レトロ|game|play/.test(lowerVal)) {
+                        applyMutation('game');
                     } else if (/戻|元|リセット|通常|reset|clear/.test(lowerVal)) {
                         applyMutation('reset');
                     } else {
-                        appendLog('COMMAND NOT RECOGNIZED. TRY: カオス, ダーク, サイバー, リセット 等');
+                        appendLog('COMMAND NOT RECOGNIZED. TRY: カオス, ダーク, サイバー, 可愛い, 日本, ゲーム, リセット 等');
                     }
                 }, 600);
             }
