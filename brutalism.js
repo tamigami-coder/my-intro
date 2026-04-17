@@ -295,7 +295,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Fetch real visitor count
                 const realCount = await getVisitorCount();
-                document.getElementById('visitorCount').innerText = realCount.toLocaleString();
+                const countDisplay = document.getElementById('visitorCount');
+                if (countDisplay) {
+                    if (realCount === null) {
+                        countDisplay.innerText = 'OFFLINE';
+                        countDisplay.classList.add('text-red-500');
+                    } else {
+                        countDisplay.innerText = realCount.toLocaleString();
+                        countDisplay.classList.remove('text-red-500');
+                    }
+                }
             } else {
                 alert('ACCESS DENIED: INVALID KEY');
                 passwordInput.value = '';
