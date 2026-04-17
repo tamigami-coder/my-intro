@@ -347,13 +347,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ターミナルの開閉トグル
     if (toggleBtn && aiTerminal) {
-        toggleBtn.addEventListener('click', () => {
+        // 初期状態の遷移設定
+        aiTerminal.style.transition = 'transform 0.3s ease, left 0.3s ease, top 0.3s ease, bottom 0.3s ease';
+
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // ドラッグ開始を防ぐ
             if (isTerminalOpen) {
-                // 閉じる（ヘッダーだけ残して下に隠す）
+                // 左下に格納する
+                aiTerminal.style.left = '1.5rem';
+                aiTerminal.style.top = 'auto';
+                aiTerminal.style.bottom = '1.5rem';
                 aiTerminal.style.transform = `translateY(calc(100% - ${termHeader.offsetHeight}px))`;
                 toggleBtn.innerText = '+';
             } else {
-                // 開く
+                // 開く（左下で開く）
                 aiTerminal.style.transform = 'translateY(0)';
                 toggleBtn.innerText = '-';
             }
@@ -369,7 +376,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (termHeader && aiTerminal) {
         termHeader.addEventListener('mousedown', (e) => {
             if(e.target === toggleBtn) return;
+            if(!isTerminalOpen) return; // 閉じているときはドラッグ不可
+
             isDragging = true;
+            aiTerminal.style.transition = 'none'; // ドラッグ中はアニメーションをオフにして追従性を上げる
             termHeader.style.cursor = 'grabbing';
             const rect = aiTerminal.getBoundingClientRect();
             dragOffsetX = e.clientX - rect.left;
@@ -391,13 +401,15 @@ document.addEventListener('DOMContentLoaded', () => {
             aiTerminal.style.left = `${newX}px`;
             aiTerminal.style.bottom = `auto`; // fixedなのでtopベースで上書き
             aiTerminal.style.top = `${newY}px`;
-            aiTerminal.style.transform = 'none'; // transformとの競合を避ける
+            aiTerminal.style.transform = 'none'; // ドラッグ中はtransformをリセット
         });
 
         document.addEventListener('mouseup', () => {
             if(isDragging) {
                 isDragging = false;
                 termHeader.style.cursor = 'move';
+                // ドラッグ終了後にアニメーションを復元
+                aiTerminal.style.transition = 'transform 0.3s ease, left 0.3s ease, top 0.3s ease, bottom 0.3s ease';
             }
         });
     }
