@@ -190,6 +190,31 @@
     </main>
 
     <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="fixed bottom-6 right-6 px-4 py-3 bg-[#ffeb3b] text-black font-['Anton'] text-2xl brutal-box hover:bg-[#4ade80] opacity-0 pointer-events-none z-50">
+        UP ↑
+    </button>
+
+    <!-- Completion Modal -->
+    <div id="completion-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] transition-opacity duration-300 opacity-0 pointer-events-none p-4">
+        <div class="glass-card w-full max-lg p-10 text-center transform scale-95 transition-transform duration-300 brutal-box">
+            
+            <h2 class="text-5xl font-['Anton'] text-black mb-4 uppercase drop-shadow-[4px_4px_0_#ff3b30]" data-jp="Access Granted" data-en="Access Granted">Access Granted</h2>
+            <p class="text-black mb-8 text-xl font-bold bg-[#4ade80] inline-block px-4 py-1 border-2 border-black" data-jp="みつけてくれてありがとう!!" data-en="THANK YOU FOR FINDING THIS!!">みつけてくれてありがとう!!</p>
+
+            <div class="border-4 border-black p-6 mb-8 bg-white text-center relative rotate-[2deg] shadow-[8px_8px_0_#000]">
+                <span class="absolute -top-4 -left-4 bg-black text-white px-2 py-1 font-bold transform -rotate-6" data-jp="SECRET" data-en="SECRET">SECRET</span>
+                <p class="text-xl md:text-2xl mt-4 font-black leading-relaxed" data-jp="全てのギミックを解き明かした<br>あなたに最大限のRESPECTを！" data-en="MAXIMUM RESPECT to you for uncovering every hidden secret!">
+                    全てのギミックを解き明かした<br>
+                    あなたに最大限のRESPECTを！
+                </p>
+            </div>
+
+            <button id="close-modal" class="brutal-button w-full py-4 text-2xl" data-jp="CLOSE SHIT DOWN" data-en="CLOSE SHIT DOWN">
+                CLOSE SHIT DOWN
+            </button>
+        </div>
+    </div>
+
     <!-- Sidebar Menu (Slide in from right) -->
     <div id="adminSidebar" class="fixed top-0 right-0 h-full w-64 bg-white border-l-8 border-black z-[110] transform translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-8 flex flex-col gap-8">
