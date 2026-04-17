@@ -137,4 +137,46 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('show');
         });
     }
+
+    // --- [4. Language Toggle Logic] ---
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('lang') || 'jp';
+
+    function setLanguage(lang) {
+        const translatable = document.querySelectorAll('[data-jp]');
+        translatable.forEach(el => {
+            const jpText = el.getAttribute('data-jp');
+            const enText = el.getAttribute('data-en');
+            
+            // If the element has children (like bold tags), we might need to handle HTML
+            // But for this simple portfolio, textContent/innerHTML is usually fine
+            if (lang === 'en') {
+                el.innerHTML = enText;
+            } else {
+                el.innerHTML = jpText;
+            }
+        });
+        
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        
+        // Visual feedback on button
+        if(langToggle) {
+            langToggle.style.backgroundColor = lang === 'en' ? '#000' : '#fff';
+            langToggle.style.color = lang === 'en' ? '#fff' : '#000';
+        }
+    }
+
+    // Initialize Language
+    setLanguage(currentLang);
+
+    if (langToggle) {
+        langToggle.addEventListener('click', () => {
+            setLanguage(currentLang === 'jp' ? 'en' : 'jp');
+            
+            // Glitch effect on toggle
+            langToggle.style.animation = 'glitch 0.2s linear';
+            setTimeout(() => langToggle.style.animation = '', 200);
+        });
+    }
 });

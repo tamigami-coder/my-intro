@@ -193,3 +193,20 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Language Toggle Button */
+.lang-toggle {
+    transition: all 0.2s ease;
+}
+
+@media (min-width: 768px) {
+    .lang-toggle {
+        font-size: 1rem;
+        width: 80px;
+    }
+}
+
+.lang-toggle:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
