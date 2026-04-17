@@ -16,9 +16,17 @@ body {
     background-size: 20px 20px;
 }
 
-/* 常に矢印カーソルを保つ（文字Iビームを出さない） */
+/* 常に矢印カーソルを保ち、テキスト選択を無効化（見た目の美しさを優先） */
 * {
     cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ターミナル内のみ、利便性のために選択を許可 */
+#ai-terminal-log, #ai-terminal-input, input, textarea {
+    user-select: text !important;
+    -webkit-user-select: text !important;
 }
 
 /* クリック可能な要素は指マークに戻す */
