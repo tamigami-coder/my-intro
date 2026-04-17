@@ -162,8 +162,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Visual feedback on button
         if(langToggle) {
-            langToggle.style.backgroundColor = lang === 'en' ? '#000' : '#fff';
-            langToggle.style.color = lang === 'en' ? '#fff' : '#000';
+            const jpStyle = lang === 'jp' ? 'bg-black text-white px-1' : 'opacity-40';
+            const enStyle = lang === 'en' ? 'bg-black text-white px-1' : 'opacity-40';
+            
+            langToggle.innerHTML = `
+                <span class="${jpStyle}">JP</span>
+                <span class="mx-1">/</span>
+                <span class="${enStyle}">EN</span>
+            `;
         }
     }
 
