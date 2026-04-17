@@ -460,12 +460,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendLog('APPLYING MUTATION: DARK_FANTASY');
                 css = `
                     body, main { background-color: #050505 !important; color: #b91c1c !important; }
-                    .brutal-box { background-color: #111 !important; color: #b91c1c !important; border-color: #b91c1c !important; box-shadow: 4px 4px 0 #b91c1c !important; }
-                    .bg-[#ffeb3b], .bg-[#4ade80], .bg-white, .bg-[#ff9ee5] { background-color: #1a1a1a !important; color: #dc2626 !important; border-color: #b91c1c !important; box-shadow: 4px 4px 0 #450a0a !important; }
+                    .brutal-box, .coupon-box { background-color: #111 !important; color: #b91c1c !important; border-color: #b91c1c !important; box-shadow: 4px 4px 0 #b91c1c !important; }
+                    [class*="bg-[#"], .bg-white { background-color: #1a1a1a !important; color: #dc2626 !important; border-color: #b91c1c !important; box-shadow: 4px 4px 0 #450a0a !important; }
                     h1, h2 { color: #7f1d1d !important; text-shadow: 4px 4px 0 #450a0a, -2px -2px 0 #000; drop-shadow: none !important; }
                     img { filter: grayscale(100%) contrast(150%); border-color: #b91c1c !important; }
                     .marquee-container { background-color: #000 !important; color: #dc2626 !important; border-bottom: 2px solid #b91c1c; }
-                    .text-black { color: #ef4444 !important; }
+                    .text-black, .text-gray-800 { color: #ef4444 !important; }
                     .scroll-text { color: #ef4444 !important; }
                 `;
                 break;
@@ -473,11 +473,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendLog('APPLYING MUTATION: CYBERPUNK');
                 css = `
                     body { background-color: #000 !important; color: #0ff !important; font-family: monospace !important; }
-                    .brutal-box { background-color: rgba(0, 20, 20, 0.8) !important; border: 2px solid #0ff !important; box-shadow: 0 0 10px #0ff !important; color: #f0f !important; }
-                    .bg-[#ffeb3b], .bg-[#4ade80], .bg-white, .bg-[#ff9ee5] { background-color: #000 !important; color: #0ff !important; border-color: #f0f !important; box-shadow: 4px 4px 0px #0ff !important;}
+                    .brutal-box, .coupon-box { background-color: rgba(0, 20, 20, 0.8) !important; border: 2px solid #0ff !important; box-shadow: 0 0 10px #0ff !important; color: #f0f !important; }
+                    [class*="bg-[#"], .bg-white { background-color: #000 !important; color: #0ff !important; border-color: #f0f !important; box-shadow: 4px 4px 0px #0ff !important;}
                     h1, h2, h3 { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff !important; color: #fff !important; }
                     .marquee-container { background-color: #f0f !important; color: #0ff !important; text-shadow: 2px 2px 0 #000; font-family: monospace; }
-                    .text-black { color: #fff !important; }
+                    .text-black, .text-gray-800 { color: #0ff !important; }
+                    .border-black { border-color: #f0f !important; }
                     * { cursor: crosshair !important; }
                 `;
                 break;
