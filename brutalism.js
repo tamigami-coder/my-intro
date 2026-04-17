@@ -199,6 +199,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutAdmin = document.getElementById('logoutAdmin');
     const passwordInput = document.getElementById('adminPasswordInput');
 
+    // Moe-Counterの設定（数値データ取得用）
+    async function handleVisitorCounter() {
+        const visitorCountEl = document.getElementById('visitorCount');
+        if (!visitorCountEl) return;
+
+        try {
+            // Moe-Counterの数値データ取得用エンドポイント (/record/)
+            // 注意: このエンドポイントにアクセスするとカウントが+1されます
+            const response = await fetch(`https://count.getloli.com/record/@tamigami-portfolio-2026`);
+            if (!response.ok) throw new Error('Network response was not ok');
+            
+            const data = await response.json();
+            
+            // data.num に現在のカウント数が含まれます
+            if (visitorCountEl && data.num !== undefined) {
+                visitorCountEl.innerText = data.num.toLocaleString();
+            }
+            return data.num;
+        } catch (error) {
+            console.error("Moe-Counter Error:", error);
+            if (visitorCountEl) visitorCountEl.innerText = "---"; 
+            return null;
+        }
+    }
+
+    // 読み込み時に最新の来場者数を取得
+    handleVisitorCounter();
+
     // パスワード "1234" の SHA-256 ハッシュ
     const ADMIN_PASS_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
 
@@ -265,7 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleElement(adminDashboardModal, true);
                 passwordInput.value = '';
                 
-                // 管理者認証成功のログ（数値表示は画像埋め込みのため自動更新）
+                // 管理者認証成功のログ（数値表示を最新に更新）
+                handleVisitorCounter();
                 console.log('ADMIN ACCESS GRANTED');
             } else {
                 alert('ACCESS DENIED: INVALID KEY');
