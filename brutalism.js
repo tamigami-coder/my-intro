@@ -203,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ADMIN_PASS_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
 
     // 文字列を SHA-256 でハッシュ化する関数（ブラウザ標準の Crypto API を使用）
+    async function sha256(message) {
         const msgBuffer = new TextEncoder().encode(message);
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -211,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // モーダル等の表示・非表示を制御するヘルパー関数
+    function toggleElement(el, show) {
         if (!el) return;
         if (show) {
             el.classList.add('show');
@@ -264,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 passwordInput.value = '';
                 
                 // 管理者認証成功のログ（数値表示は画像埋め込みのため自動更新）
-    console.log('ADMIN ACCESS GRANTED');
+                console.log('ADMIN ACCESS GRANTED');
             } else {
                 alert('ACCESS DENIED: INVALID KEY');
                 passwordInput.value = '';
