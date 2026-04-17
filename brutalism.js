@@ -137,32 +137,4 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('show');
         });
     }
-
-    // --- [4. Dark Mode Toggle] ---
-    const themeToggle = document.getElementById('themeToggle');
-    const modeIcon = themeToggle?.querySelector('.mode-icon');
-    
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        if (modeIcon) {
-            modeIcon.innerText = theme === 'dark' ? '☀️' : '🌙';
-        }
-    }
-
-    // Initialize theme from localStorage or system preference
-    const savedTheme = localStorage.getItem('theme') || 
-                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    setTheme(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-            
-            // Subtle feedback: slight glitch effect on the toggle when clicked
-            themeToggle.classList.add('active');
-            setTimeout(() => themeToggle.classList.remove('active'), 200);
-        });
-    }
 });

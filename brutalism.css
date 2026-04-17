@@ -1,41 +1,19 @@
-:root {
-    --bg-color: #f4f4f0;
-    --text-color: #111;
-    --box-bg: #ffffff;
-    --border-color: #000000;
-    --dot-color: #d1d1cf;
-    
-    --accent-yellow: #ffeb3b;
-    --accent-pink: #ff9ee5;
-    --accent-green: #4ade80;
-    --accent-red: #ff3b30;
-}
+/* brutalism.css */
 
-[data-theme="dark"] {
-    --bg-color: #111111;
-    --text-color: #f4f4f0;
-    --box-bg: #222222;
-    --border-color: #ffffff;
-    --dot-color: #333333;
-    
-    /* On dark mode, we keep accents but maybe slightly neon-ize or keep as is */
-    --accent-yellow: #ffee58;
-    --accent-pink: #ff80ab;
-    --accent-green: #69f0ae;
-}
+/* Fonts: Anton for Impact, Yomogi for Handwriting, Inter for base */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Yomogi&family=Inter:wght@600;900&display=swap');
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: #f4f4f0; /* Off-white paper look */
+    color: #111;
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
-    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+    background-image: radial-gradient(#d1d1cf 1px, transparent 1px); /* Dot grid */
     background-size: 20px 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 常に矢印カーソルを保つ（文字Iビームを出さない） */
@@ -51,31 +29,31 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
 
 /* Brutalist UI Borders & Shadows */
 .brutal-box {
-    background-color: var(--box-bg);
-    border: 4px solid var(--border-color);
-    box-shadow: 8px 8px 0px 0px var(--border-color);
-    transition: all 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+    background-color: #fff;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0px 0px #000;
+    transition: all 0.2s ease;
 }
 
 .brutal-box:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px 0px var(--border-color);
+    box-shadow: 12px 12px 0px 0px #000;
 }
 
 .brutal-button {
-    background-color: var(--accent-yellow);
-    border: 3px solid var(--border-color);
-    box-shadow: 4px 4px 0px 0px var(--border-color);
+    background-color: #ffeb3b; /* Vibrant Yellow */
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px 0px #000;
     font-family: 'Anton', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
     cursor: pointer;
-    transition: all 0.1s ease, background-color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.1s ease;
 }
 
 .brutal-button:active {
     transform: translate(4px, 4px);
-    box-shadow: 0px 0px 0px 0px var(--border-color);
+    box-shadow: 0px 0px 0px 0px #000;
 }
 
 /* Marquee Background */
@@ -96,20 +74,20 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     font-size: 20vw;
     line-height: 1;
     color: transparent;
-    -webkit-text-stroke: 4px var(--border-color);
+    -webkit-text-stroke: 4px #000;
     display: inline-block;
     will-change: transform;
 }
 
 /* Analog Note / Sticky */
 .sticky-note {
-    background-color: var(--accent-pink); /* Vibrant Pink */
+    background-color: #ff9ee5; /* Vibrant Pink */
     padding: 10px 15px;
     font-family: 'Yomogi', cursive;
     font-size: 1.2rem;
     font-weight: bold;
-    border: 2px solid var(--border-color);
-    box-shadow: 4px 4px 0 0 var(--border-color);
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0 0 #000;
     transform: rotate(-3deg);
     position: absolute;
     z-index: 10;
@@ -117,8 +95,8 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
 
 /* Cutout Coupon */
 .coupon-box {
-    border: 4px dashed var(--border-color);
-    background-color: var(--box-bg);
+    border: 4px dashed #000;
+    background-color: #fff;
     position: relative;
     padding: 20px;
 }
@@ -150,7 +128,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
 
 .secret-fragment:not(.found):hover {
     animation: glitch 0.2s linear infinite;
-    background-color: var(--accent-red);
+    background-color: #ff3b30;
     color: #fff !important;
 }
 
@@ -184,11 +162,11 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     font-family: 'Anton', sans-serif;
     font-size: 1.5rem;
     letter-spacing: 4px;
-    background-color: var(--accent-yellow);
-    color: var(--border-color);
+    background-color: #ffeb3b;
+    color: #000;
     padding: 2px 10px;
-    border: 3px solid var(--border-color);
-    box-shadow: 4px 4px 0 var(--border-color);
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0 #000;
     text-transform: uppercase;
 }
 
@@ -197,8 +175,8 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-top: 25px solid var(--border-color);
-    filter: drop-shadow(4px 4px 0 var(--accent-yellow));
+    border-top: 25px solid #000;
+    filter: drop-shadow(4px 4px 0 #ffeb3b);
     display: block;
     margin-top: 5px;
 }
@@ -215,19 +193,3 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* Theme Toggle Button */
-.theme-toggle {
-    position: fixed;
-    top: 6rem; /* Below nav on mobile */
-    right: 1.5rem;
-    z-index: 100;
-}
-
-@media (min-width: 768px) {
-    .theme-toggle {
-        top: 2.5rem; /* Next to nav on desktop */
-        right: 18rem; /* Adjusted to not overlap identity nav */
-    }
-}
-
