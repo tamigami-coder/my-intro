@@ -42,8 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('active');
                 obs.unobserve(entry.target);
             }
         });
@@ -51,9 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const revealElements = document.querySelectorAll('.brutal-reveal');
     revealElements.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(40px)';
-        el.style.transition = 'all 0.4s cubic-bezier(0,0,0,1)';
         observer.observe(el);
     });
 
