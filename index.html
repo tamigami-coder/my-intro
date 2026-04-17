@@ -10,19 +10,21 @@
 </head>
 <body class="relative">
 
-    <!-- Giant Scrolling Background Text -->
-    <div class="marquee-container">
-        <span class="marquee-text">TAMIGAMI TECH ENTHUSIAST PORTFOLIO 2026 NO RULES</span>
+    <!-- 背景の流れる巨大なテキスト（マーキー） -->
+    <div class="marquee-container select-none">
+        <span class="marquee-text uppercase">
+            Product Designer & Engineer - WEB3 DEFI - TAMIGAMI - 
+        </span>
     </div>
 
-    <!-- Header / Nav -->
+    <!-- ヘッダー / ナビゲーション -->
     <header class="fixed top-6 right-6 md:top-10 md:right-10 z-50 flex flex-col items-end gap-2">
         <nav class="brutal-box px-4 py-2 flex items-center gap-4 text-xs md:text-base font-black uppercase tracking-widest bg-[#ffeb3b]">
             <a href="#about" class="hover:underline decoration-4 underline-offset-4" data-jp="Identity" data-en="Identity">Identity</a>
             <a href="#ai-vision" class="hover:underline decoration-4 underline-offset-4" data-jp="Vision" data-en="Vision">Vision</a>
             <a href="#goals" class="hover:underline decoration-4 underline-offset-4" data-jp="Target" data-en="Target">Target</a>
             
-            <!-- Admin Hamburger Button -->
+            <!-- 管理者用ハンバーガーメニュー -->
             <button id="adminMenuBtn" class="ml-2 p-1 hover:bg-black hover:text-white transition-colors border-2 border-transparent hover:border-black active:scale-95" title="Admin Menu">
                 <div class="space-y-1">
                     <div class="w-5 h-0.5 bg-black current-color"></div>
@@ -32,40 +34,40 @@
             </button>
         </nav>
         
-        <!-- Integrated Language Toggle: Moved to bottom right of the nav -->
+        <!-- ナビゲーションに統合された言語切り替えボタン -->
         <button id="langToggle" class="brutal-box bg-white px-2 py-1 hover:scale-105 transition-transform duration-100 flex items-center shadow-[4px_4px_0_#000]">
-            <span data-jp="JP/EN" data-en="JP/EN" class="sr-only">Language</span>
+            <span data-jp="JP/EN" data-en="JP/EN" class="sr-only">Language Switch</span>
             <div class="lang-display flex gap-1 text-[10px] md:text-xs font-black">
-                <!-- JS fills this -->
+                <!-- JSで動的に内容を挿入 -->
             </div>
         </button>
     </header>
 
     <main class="max-w-5xl mx-auto px-4 pt-32 pb-40 relative z-10 flex flex-col gap-32">
         
-        <!-- Hero Section -->
+        <!-- ヒーローセクション -->
         <section id="hero" class="min-h-[85vh] w-full relative brutal-reveal mt-10 flex flex-col md:block items-center justify-center overflow-x-hidden md:overflow-visible p-4">
             
             <div class="sticky-note top-10 left-4 md:left-20 rotate-[-5deg] z-40">
-                <span class="text-sm font-sans block mb-1" data-jp="Memo" data-en="Memo">Memo</span>
+                <span class="text-sm font-sans block mb-1" data-jp="メモ" data-en="Memo">Memo</span>
                 <span class="secret-fragment" data-id="1">★</span>
             </div>
 
-            <!-- Avatar Wrapper: Relative on mobile (stacks), Absolute on desktop -->
+            <!-- アバターのラッパー -->
             <div class="relative md:absolute md:top-1/2 md:left-1/2 z-10 -rotate-6 transform md:-translate-x-[180%] md:-translate-y-[80%] mb-12 md:mb-0">
                 
-                <!-- Secret 2: Fake Stamp -->
+                <!-- 隠し要素 2: 偽の承認スタンプ -->
                 <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-red-500 rounded-full border-[3px] border-black text-white font-black flex flex-col items-center justify-center rotate-[20deg] cursor-pointer secret-fragment z-0 text-sm overflow-hidden hover:rotate-12 transition-transform duration-200" data-id="2">
                     <span>APRV</span>
                 </div>
                 
-                <!-- The actual Square Frame -->
+                <!-- 正方形の画像フレーム -->
                 <div class="bg-white border-8 border-black shadow-[16px_16px_0px_#000] relative z-10 flex">
-                    <img src="avatar.png" alt="Profile Avatar" class="w-48 h-48 md:w-72 md:h-72 rounded-full object-cover relative z-20 border-4 border-black">
+                    <img src="avatar.jpg" alt="Profile Avatar" class="w-48 h-48 md:w-72 md:h-72 rounded-full object-cover relative z-20 border-4 border-black">
                 </div>
             </div>
             
-            <!-- Text Wrapper: Relative on mobile, Absolute on desktop -->
+            <!-- テキストのラッパー -->
             <div class="relative md:absolute md:top-1/2 md:left-1/2 z-20 pointer-events-none text-center transform md:-translate-x-1/2 md:-translate-y-1/2 w-full flex flex-col items-center">
                 <h1 class="text-[4rem] md:text-[11rem] font-['Anton'] leading-none text-black uppercase drop-shadow-[8px_8px_0_#ffeb3b] md:drop-shadow-[12px_12px_0_#ffeb3b]" data-jp="TAMIGAMI" data-en="TAMIGAMI">
                     TAMIGAMI
@@ -75,22 +77,22 @@
                 </div>
             </div>
 
-            <!-- Scroll Down Indicator -->
+            <!-- スクロールインジケーター -->
             <div class="scroll-indicator">
                 <span class="scroll-text">SCROLL</span>
                 <span class="scroll-arrow"></span>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- 自己紹介セクション -->
         <section id="about" class="scroll-mt-32 brutal-reveal relative z-20">
             <div class="brutal-box p-8 md:p-12 relative bg-[#4ade80] rotate-[1deg]">
-                <!-- Cutout Coupon inside About info -->
+                <!-- 自己紹介内の切り取りクーポン風ボックス -->
                 <div class="coupon-box bg-white rotate-[-2deg] p-6 shadow-[4px_4px_0_#000] md:w-1/2 ml-auto z-10 relative">
                     <div class="absolute top-2 left-2 text-[10px] font-bold uppercase text-gray-800">✂ Cut here</div>
                     <h3 class="text-xl font-black uppercase mb-2 border-b-4 border-black pb-1 inline-block text-black" data-jp="Affiliation" data-en="Affiliation">Affiliation</h3>
                     <p class="text-2xl font-black text-black" data-jp="千葉工業大学 / 3年生" data-en="Chiba Inst. of Tech. / Junior">千葉工業大学 / 3年生</p>
-                    <!-- Secret 3: Clickable scissor icon -->
+                    <!-- 隠し要素 3: ハサミのアイコン -->
                     <span class="absolute bottom-2 right-2 text-2xl secret-fragment" data-id="3">✂️</span>
                 </div>
 
@@ -102,7 +104,7 @@
                     </p>
                 </div>
 
-                <!-- Hobby Block -->
+                <!-- 趣味のブロック -->
                 <div class="mt-6 md:w-3/4 ml-auto bg-[#ff9ee5] border-4 border-black p-6 shadow-[8px_8px_0px_#000] relative z-30 rotate-[2deg] brutal-reveal">
                     <h3 class="text-2xl font-black uppercase mb-2 border-b-4 border-black pb-1 inline-block" data-jp="My Weapon" data-en="My Weapon">My Weapon</h3>
                     <p class="text-2xl font-bold leading-relaxed" data-jp="生粋のゲーマー🎮<br>RPGからスローライフまで幅広くやってます！" data-en="Hardcore Gamer🎮<br>From RPGs to Slow-life, I play it all!">
@@ -113,12 +115,12 @@
             </div>
         </section>
 
-        <!-- AI Vision Section -->
+        <!-- AIビジョン・セクション -->
         <section id="ai-vision" class="scroll-mt-32 brutal-reveal">
             <h2 class="text-6xl md:text-8xl font-['Anton'] mb-8 uppercase bg-black text-white inline-block px-4 py-2 brutal-box shadow-[12px_12px_0_#ff3b30] rotate-[-2deg]" data-jp="AI Vision" data-en="AI Vision">AI Vision</h2>
             
             <div class="flex flex-col md:flex-row gap-12 mt-8">
-                <!-- Card 1 -->
+                <!-- カード 1 -->
                 <div class="brutal-box flex-1 bg-white p-8 hover:bg-[#ff9ee5] brutal-reveal">
                     <h3 class="font-black text-3xl mb-4 uppercase underline decoration-8 decoration-black" data-jp="Growth." data-en="Growth.">Growth.</h3>
                     <p class="text-xl font-bold leading-loose" data-jp="問いを投げるたび、新しい視点を与えてくれる。<br>まさに「共に成長する最強のパートナー」。" data-en="Every time I ask a question, it offers a new perspective.<br>Truly the 'Ultimate Partner for mutual growth'.">
@@ -127,7 +129,7 @@
                     </p>
                 </div>
                 
-                <!-- Card 2 -->
+                <!-- カード 2 -->
                 <div class="brutal-box flex-1 bg-white p-8 hover:bg-blue-300 relative brutal-reveal">
                     <h3 class="font-black text-3xl mb-4 uppercase underline decoration-8 decoration-black" data-jp="Balance." data-en="Balance.">Balance.</h3>
                     <p class="text-xl font-bold leading-loose" data-jp="ただ頼りきりになるのはNG。<br>自分の思考との「適切な線引きとバランス」を保ちながら向き合いたい。" data-en="Relying solely on it is a NO-GO.<br>I want to maintain a 'Proper balance and boundary' with my own thinking.">
@@ -135,7 +137,7 @@
                         自分の思考との「適切な線引きとバランス」を保ちながら向き合いたい。
                     </p>
                     
-                    <!-- Secret 4: A random black block with hidden text -->
+                    <!-- 隠し要素 4: 伏せ字にされたテキスト -->
                     <div class="secret-fragment bg-black text-black hover:text-white px-2 py-1 mt-4 inline-block font-mono text-sm cursor-help" data-id="4">
                         [REDACTED DATA]
                     </div>
@@ -143,10 +145,10 @@
             </div>
         </section>
 
-        <!-- Goals Section -->
+        <!-- ゴール・セクション -->
         <section id="goals" class="scroll-mt-32 brutal-reveal relative">
             
-            <!-- Sticky note overlapping the box -->
+            <!-- ボックスに重なる付箋メモ -->
             <div class="sticky-note -top-8 right-0 md:right-20 rotate-[10deg] z-20">
                 アイデアを形に！✏️
             </div>
@@ -155,19 +157,19 @@
                 <h2 class="text-6xl md:text-8xl font-black uppercase mb-10 break-all" data-jp="Action & Goal" data-en="Action & Goal">Action & Goal</h2>
                 
                 <div class="flex flex-col items-center gap-1 md:gap-2">
-                    <!-- Sentence 1 -->
+                    <!-- 文 1 -->
                     <p class="text-2xl md:text-4xl font-black leading-tight tracking-tighter" data-jp="AIをハブとして常に最新技術を展開・吸収し、" data-en="Consistently absorb & leverage cutting-edge tech via AI,">
                         AIをハブとして常に最新技術を展開・吸収し、
                     </p>
                     
-                    <!-- Sentence 2 (Highlighted) -->
+                    <!-- 文 2 (強調要素) -->
                     <div class="my-3 md:my-5">
                         <span class="bg-white px-3 md:px-4 py-2 inline-block border-4 border-black rotate-[1deg] shadow-[6px_6px_0_#000] text-[1.4rem] md:text-4xl font-black tracking-tighter whitespace-nowrap" data-jp="今までに見たこともない衝撃的なWebアプリケーション" data-en="Mind-Blowing Web Applications unlike anything before">
                             今までに見たこともない衝撃的なWebアプリケーション
                         </span>
                     </div>
                     
-                    <!-- Sentence 3 -->
+                    <!-- 文 3 -->
                     <p class="text-2xl md:text-4xl font-black leading-tight tracking-tighter" data-jp="を、自らの手で爆速で創り出す！" data-en="At Ludicrous Speed, with my own hands!">
                         を、自らの手で爆速で創り出す！
                     </p>
@@ -175,11 +177,11 @@
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- フッター -->
         <footer class="mt-20 border-t-8 border-black pt-8 brutal-reveal">
             <div class="flex flex-col md:flex-row justify-between items-center font-['Anton'] text-2xl uppercase">
                 <p><span data-jp="2026 Tamigami" data-en="2026 Tamigami">2026 Tamigami</span></p>
-                <!-- Secret 5 -->
+                <!-- 隠し要素 5 -->
                 <p>
                     <span data-jp="All Rights Reserved" data-en="All Rights Reserved">All Rights Reserved</span>
                     <span class="secret-fragment text-3xl cursor-alias text-red-500" data-id="5">®</span>
@@ -189,14 +191,14 @@
 
     </main>
 
-    <!-- Scroll to Top Button -->
+    <!-- トップへ戻るボタン -->
     <button id="scrollToTopBtn" class="fixed bottom-6 right-6 px-4 py-3 bg-[#ffeb3b] text-black font-['Anton'] text-2xl brutal-box hover:bg-[#4ade80] opacity-0 pointer-events-none z-[100] transition-opacity duration-300">
         UP ↑
     </button>
 
-    <!-- Completion Modal -->
+    <!-- ギミック完了用モーダル -->
     <div id="completion-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] transition-opacity duration-300 opacity-0 pointer-events-none p-4">
-        <div class="glass-card w-full max-w-lg p-10 text-center transform scale-95 transition-transform duration-300 brutal-box">
+        <div class="glass-card w-full max-lg p-10 text-center transform scale-95 transition-transform duration-300 brutal-box">
             
             <h2 class="text-5xl font-['Anton'] text-black mb-4 uppercase drop-shadow-[4px_4px_0_#ff3b30]" data-jp="Access Granted" data-en="Access Granted">Access Granted</h2>
             <p class="text-black mb-8 text-xl font-bold bg-[#4ade80] inline-block px-4 py-1 border-2 border-black" data-jp="みつけてくれてありがとう!!" data-en="THANK YOU FOR FINDING THIS!!">みつけてくれてありがとう!!</p>
@@ -215,7 +217,7 @@
         </div>
     </div>
 
-    <!-- Sidebar Menu (Slide in from right) -->
+    <!-- 管理者用サイドバー（右からスライドイン） -->
     <div id="adminSidebar" class="fixed top-0 right-0 h-full w-64 bg-white border-l-8 border-black z-[110] transform translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-8 flex flex-col gap-8">
             <button id="closeSidebar" class="self-end text-3xl font-black">×</button>
@@ -226,7 +228,7 @@
         </div>
     </div>
 
-    <!-- Admin Password Modal -->
+    <!-- 管理者ログイン用モーダル -->
     <div id="adminAuthModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[120] opacity-0 pointer-events-none transition-opacity duration-300 p-4">
         <div class="bg-white brutal-box p-8 w-full max-w-sm">
             <h2 class="text-3xl font-black uppercase mb-6" data-jp="ADMIN LOGIN" data-en="ADMIN LOGIN">ADMIN LOGIN</h2>
@@ -239,7 +241,7 @@
         </div>
     </div>
 
-    <!-- Admin Dashboard Modal -->
+    <!-- 管理者ダッシュボード・モーダル -->
     <div id="adminDashboardModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[130] opacity-0 pointer-events-none transition-opacity duration-300 p-4">
         <div class="bg-[#4ade80] brutal-box p-8 w-full max-w-md relative">
             <button id="closeDashboard" class="absolute top-4 right-4 text-3xl font-black">×</button>
@@ -247,7 +249,9 @@
             
             <div class="bg-white border-4 border-black p-6 shadow-[8px_8px_0_#000]">
                 <h3 class="text-xl font-bold uppercase mb-2" data-jp="現在の累計閲覧数" data-en="TOTAL PAGE VIEWS">現在の累計閲覧数</h3>
-                <p class="text-6xl font-['Anton'] text-black" id="visitorCount">---</p>
+                <div class="flex justify-center py-4 bg-black brutal-box mb-4">
+                    <img src="https://count.getloli.com/get/@tamigami-portfolio-2026?theme=asoul" alt="Moe Counter" class="h-12 md:h-16">
+                </div>
                 <p class="text-xs mt-4 opacity-70 font-bold" data-jp="● リアルタイム計測中" data-en="● LIVE TRACKING ACTIVE">● リアルタイム計測中</p>
             </div>
             
@@ -255,7 +259,7 @@
         </div>
     </div>
 
-    <!-- Script tags moved to the bottom -->
+    <!-- スクリプトの読み込み -->
     <script src="brutalism.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-/* Cooler, slightly masculine gradient background */
+/* やや無骨でクールなグラデーションの背景 */
 .bg-gradient-animate {
     background: linear-gradient(-45deg, #f1f5f9, #e2e8f0, #f8fafc, #dbeafe);
     background-size: 400% 400%;

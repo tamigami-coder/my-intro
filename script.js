@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach(el => observer.observe(el));
 
-    // ---- [Easter Egg Logic] ----
+    // ---- [イースターエッグのロジック] ----
     const secrets = document.querySelectorAll('.secret-fragment');
     const TOTAL_SECRETS = 5;
     const foundSecrets = new Set();
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ---- [Scroll to Top Logic] ----
+    // ---- [トップへ戻るボタンのロジック] ----
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
     window.addEventListener('scroll', () => {

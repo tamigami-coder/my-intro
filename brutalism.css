@@ -1,6 +1,6 @@
-/* brutalism.css */
+/* brutalism.css / ブルータリズム・デザイン用スタイルシート */
 
-/* Fonts: Anton for Impact, Yomogi for Handwriting, Inter for base */
+/* フォント設定: インパクトのあるAnton、手書き風のYomogi、ベースのInter */
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Yomogi&family=Inter:wght@600;900&display=swap');
 
 html {
@@ -8,11 +8,11 @@ html {
 }
 
 body {
-    background-color: #f4f4f0; /* Off-white paper look */
+    background-color: #f4f4f0; /* オフホワイトの紙のような質感 */
     color: #111;
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
-    background-image: radial-gradient(#d1d1cf 1px, transparent 1px); /* Dot grid */
+    background-image: radial-gradient(#d1d1cf 1px, transparent 1px); /* ドット方眼の背景 */
     background-size: 20px 20px;
 }
 
@@ -27,7 +27,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
 }
 
 
-/* Brutalist UI Borders & Shadows */
+/* ブルータリズムUIのボーダーとシャドウ */
 .brutal-box {
     background-color: #fff;
     border: 4px solid #000;
@@ -41,7 +41,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
 }
 
 .brutal-button {
-    background-color: #ffeb3b; /* Vibrant Yellow */
+    background-color: #ffeb3b; /* 鮮やかなイエロー */
     border: 3px solid #000;
     box-shadow: 4px 4px 0px 0px #000;
     font-family: 'Anton', sans-serif;
@@ -56,7 +56,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     box-shadow: 0px 0px 0px 0px #000;
 }
 
-/* Marquee Background */
+/* 背後の巨大な流れる文字（マーキー） */
 .marquee-container {
     position: fixed;
     top: 20%;
@@ -79,9 +79,9 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     will-change: transform;
 }
 
-/* Analog Note / Sticky */
+/* アナログ風の付箋（付箋メモ） */
 .sticky-note {
-    background-color: #ff9ee5; /* Vibrant Pink */
+    background-color: #ff9ee5; /* 鮮やかなピンク */
     padding: 10px 15px;
     font-family: 'Yomogi', cursive;
     font-size: 1.2rem;
@@ -93,7 +93,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     z-index: 10;
 }
 
-/* Cutout Coupon */
+/* 切り取りクーポン風のボックス */
 .coupon-box {
     border: 4px dashed #000;
     background-color: #fff;
@@ -101,7 +101,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     padding: 20px;
 }
 
-/* Custom Brutalist Tooltip */
+/* カスタム・ブルータリズム・ツールチップ（隠し要素用） */
 .secret-fragment {
     position: relative;
     cursor: help;
@@ -116,7 +116,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
 
 
 
-/* Glitch animation on hover for secrets */
+/* 隠し要素ホバー時のグリッチ・アニメーション */
 @keyframes glitch {
     0% { transform: translate(0) }
     20% { transform: translate(-2px, 2px) }
@@ -132,7 +132,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     color: #fff !important;
 }
 
-/* Modal styles for brutalism */
+/* ブルータリズム風モーダルのスタイル */
 #completion-modal.show,
 #adminAuthModal.show,
 #adminDashboardModal.show {
@@ -141,7 +141,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
 }
 
 
-/* Scroll Down Indicator Animation */
+/* 「SCROLL」インジケーターのバウンスアニメーション */
 @keyframes brutal-bounce {
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50% { transform: translateX(-50%) translateY(15px); }
@@ -184,7 +184,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     margin-top: 5px;
 }
 
-/* Scroll Reveal Animation */
+/* スクロール時の要素浮き上がりアニメーション */
 .brutal-reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -197,7 +197,7 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     transform: translateY(0);
 }
 
-/* Language Toggle Button - Integrated */
+/* 言語切り替えボタン（ナビゲーション統合版） */
 #langToggle {
     cursor: pointer !important;
 }

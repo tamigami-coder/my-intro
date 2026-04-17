@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- [1. Marquee Scroll Logic & Scroll to Top] ---
+    // --- [1. マーキー（流れる文字）とトップへ戻るボタンのロジック] ---
     const marquee = document.querySelector('.marquee-text');
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
     let currentScroll = 0;
@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         currentScroll = window.scrollY;
         
-        // Move text to the left as you scroll down
+        // スクロールに合わせてテキストを左に移動
         if (marquee) {
             marquee.style.transform = `translateX(-${currentScroll * 0.5}px)`;
         }
 
-        // Toggle Scroll to Top Button
+        // トップへ戻るボタンの表示・非表示切り替え
         if (scrollToTopBtn) {
             if (currentScroll > 300) {
                 scrollToTopBtn.style.opacity = '1';
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- [2. Scroll Reveal] ---
+    // --- [2. スクロール時の要素表示（Scroll Reveal）] ---
     const observerOptions = {
         threshold: 0.1
     };
@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // --- [3. Secret Fragments] ---
+    // --- [3. 隠し要素（シークレット・フラグメント）のロジック] ---
     const secrets = document.querySelectorAll('.secret-fragment');
     const TOTAL_SECRETS = 5;
     const foundSecrets = new Set();
     const modal = document.getElementById('completion-modal');
     const closeModalBtn = document.getElementById('close-modal');
 
-    // Create brutalist toast container
+    // ブルータリズム風通知（トースト）コンテナの作成
     const notificationsContainer = document.createElement('div');
     notificationsContainer.style.position = 'fixed';
     notificationsContainer.style.bottom = '20px';
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toast.className = 'brutal-box';
         toast.style.padding = '10px 20px';
         toast.style.fontWeight = '900';
-        toast.style.backgroundColor = '#ff3b30'; // Red alert
+        toast.style.backgroundColor = '#ff3b30'; // 赤色の警告色
         toast.style.color = '#fff';
         toast.style.animation = 'slideInRight 0.2s forwards';
         
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 startVelocity: 30,
                 spread: 360,
                 colors: ['#000000', '#ffeb3b', '#ff3b30', '#ffffff'],
-                shapes: ['square'], // Brutalist shapes
+                shapes: ['square'], // ブルータリズムに合わせた四角形の紙吹雪
                 origin: { x: Math.random(), y: Math.random() - 0.2 }
             });
         }, 200);
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- [4. Language Toggle Logic] ---
+    // --- [4. 言語切り替えロジック] ---
     const langToggle = document.getElementById('langToggle');
     let currentLang = localStorage.getItem('lang') || 'jp';
 
@@ -148,8 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const jpText = el.getAttribute('data-jp');
             const enText = el.getAttribute('data-en');
             
-            // If the element has children (like bold tags), we might need to handle HTML
-            // But for this simple portfolio, textContent/innerHTML is usually fine
+            // テキストの流し込み（HTMLタグを含む場合があるため innerHTML を使用）
             if (lang === 'en') {
                 el.innerHTML = enText;
             } else {
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLang = lang;
         localStorage.setItem('lang', lang);
         
-        // Visual feedback on button
+        // ボタンの見た目を更新（アクティブな言語を強調）
         const langDisplay = langToggle?.querySelector('.lang-display');
         if(langDisplay) {
             const jpClass = lang === 'jp' ? 'active' : 'opacity-40';
@@ -174,20 +173,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize Language
+    // 初期言語の設定
     setLanguage(currentLang);
 
     if (langToggle) {
         langToggle.addEventListener('click', () => {
             setLanguage(currentLang === 'jp' ? 'en' : 'jp');
             
-            // Glitch effect on toggle
+            // ボタンクリック時のグリッチ演出
             langToggle.style.animation = 'glitch 0.2s linear';
             setTimeout(() => langToggle.style.animation = '', 200);
         });
     }
 
-    // --- [5. Admin Panel Logic] ---
+    // --- [5. 管理者パネルのロジック] ---
     const adminMenuBtn = document.getElementById('adminMenuBtn');
     const adminSidebar = document.getElementById('adminSidebar');
     const closeSidebar = document.getElementById('closeSidebar');
@@ -200,39 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutAdmin = document.getElementById('logoutAdmin');
     const passwordInput = document.getElementById('adminPasswordInput');
 
-    // CounterAPI (Stable alternative)
-    const COUNT_API_BASE = 'https://api.counterapi.dev/v1';
-    const NAMESPACE = 'tamigami-coder-portfolio';
-    const KEY = 'main_visits';
-
-    // Increment Visitor Count on Load
-    async function incrementCount() {
-        try {
-            // CounterAPI.dev V1 usage: /namespace/key/up to increment
-            await fetch(`${COUNT_API_BASE}/${NAMESPACE}/${KEY}/up`);
-        } catch (e) {
-            console.warn('CounterAPI increment failed');
-        }
-    }
-    incrementCount();
-
-    // Fetch Current Count for Dashboard
-    async function getVisitorCount() {
-        try {
-            const resp = await fetch(`${COUNT_API_BASE}/${NAMESPACE}/${KEY}`);
-            const data = await resp.json();
-            // CounterAPI.dev V1 response structure: { "id": ..., "key": ..., "namespace": ..., "count": ... }
-            return data.count || 0;
-        } catch (e) {
-            console.error('CounterAPI fetch failed', e);
-            return null;
-        }
-    }
-
-    // SHA-256 hash of "1234"
+    // パスワード "1234" の SHA-256 ハッシュ
     const ADMIN_PASS_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
 
-    async function sha256(message) {
+    // 文字列を SHA-256 でハッシュ化する関数（ブラウザ標準の Crypto API を使用）
         const msgBuffer = new TextEncoder().encode(message);
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -240,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return hashHex;
     }
 
-    function toggleElement(el, show) {
+    // モーダル等の表示・非表示を制御するヘルパー関数
         if (!el) return;
         if (show) {
             el.classList.add('show');
@@ -253,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Sidebar Toggles
+    // サイドバーの開閉
     if (adminMenuBtn) {
         adminMenuBtn.addEventListener('click', () => {
             adminSidebar.style.transform = 'translateX(0)';
@@ -266,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Auth Modal Toggles
+    // 管理者ログイン用モーダルの開閉
     if (goToAdminBtn) {
         goToAdminBtn.addEventListener('click', () => {
             adminSidebar.style.transform = 'translateX(100%)';
@@ -282,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Auth Submission
+    // 管理者認証の実行
     if (submitAuth) {
         submitAuth.addEventListener('click', async () => {
             const input = passwordInput.value;
@@ -293,18 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleElement(adminDashboardModal, true);
                 passwordInput.value = '';
                 
-                // Fetch real visitor count
-                const realCount = await getVisitorCount();
-                const countDisplay = document.getElementById('visitorCount');
-                if (countDisplay) {
-                    if (realCount === null) {
-                        countDisplay.innerText = 'OFFLINE';
-                        countDisplay.classList.add('text-red-500');
-                    } else {
-                        countDisplay.innerText = realCount.toLocaleString();
-                        countDisplay.classList.remove('text-red-500');
-                    }
-                }
+                // 管理者認証成功のログ（数値表示は画像埋め込みのため自動更新）
+    console.log('ADMIN ACCESS GRANTED');
             } else {
                 alert('ACCESS DENIED: INVALID KEY');
                 passwordInput.value = '';
@@ -312,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dashboard Close / Logout
+    // ダッシュボードの終了 / ログアウト
     if (closeDashboard) {
         closeDashboard.addEventListener('click', () => {
             toggleElement(adminDashboardModal, false);
