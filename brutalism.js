@@ -200,17 +200,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutAdmin = document.getElementById('logoutAdmin');
     const passwordInput = document.getElementById('adminPasswordInput');
 
-    // CountAPI Details
-    const COUNT_API_URL = 'https://api.countapi.xyz';
-    const NAMESPACE = 'tamigami-coder-portfolio-2026';
-    const KEY = 'visits';
+    // CounterAPI (Stable alternative)
+    const COUNT_API_BASE = 'https://api.counterapi.dev/v1';
+    const NAMESPACE = 'tamigami-coder-portfolio';
+    const KEY = 'main_visits';
 
     // Increment Visitor Count on Load
     async function incrementCount() {
         try {
-            await fetch(`${COUNT_API_URL}/hit/${NAMESPACE}/${KEY}`);
+            // CounterAPI.dev V1 usage: /namespace/key/up to increment
+            await fetch(`${COUNT_API_BASE}/${NAMESPACE}/${KEY}/up`);
         } catch (e) {
-            console.warn('CountAPI failed to increment');
+            console.warn('CounterAPI increment failed');
         }
     }
     incrementCount();
@@ -218,12 +219,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch Current Count for Dashboard
     async function getVisitorCount() {
         try {
-            const resp = await fetch(`${COUNT_API_URL}/get/${NAMESPACE}/${KEY}`);
+            const resp = await fetch(`${COUNT_API_BASE}/${NAMESPACE}/${KEY}`);
             const data = await resp.json();
-            return data.value;
+            // CounterAPI.dev V1 response structure: { "id": ..., "key": ..., "namespace": ..., "count": ... }
+            return data.count || 0;
         } catch (e) {
-            // Fallback mock number if API is down
-            return Math.floor(Math.random() * 500) + 1200;
+            console.error('CounterAPI fetch failed', e);
+            return null;
         }
     }
 
