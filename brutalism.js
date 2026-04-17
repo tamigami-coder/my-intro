@@ -177,6 +177,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Language
     setLanguage(currentLang);
 
+    if (langToggle) {
+        langToggle.addEventListener('click', () => {
+            setLanguage(currentLang === 'jp' ? 'en' : 'jp');
+            
+            // Glitch effect on toggle
+            langToggle.style.animation = 'glitch 0.2s linear';
+            setTimeout(() => langToggle.style.animation = '', 200);
+        });
+    }
+
     // --- [5. Admin Panel Logic] ---
     const adminMenuBtn = document.getElementById('adminMenuBtn');
     const adminSidebar = document.getElementById('adminSidebar');
