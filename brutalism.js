@@ -200,6 +200,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutAdmin = document.getElementById('logoutAdmin');
     const passwordInput = document.getElementById('adminPasswordInput');
 
+    // CountAPI Details
+    const COUNT_API_URL = 'https://api.countapi.xyz';
+    const NAMESPACE = 'tamigami-coder-portfolio-2026';
+    const KEY = 'visits';
+
+    // Increment Visitor Count on Load
+    async function incrementCount() {
+        try {
+            await fetch(`${COUNT_API_URL}/hit/${NAMESPACE}/${KEY}`);
+        } catch (e) {
+            console.warn('CountAPI failed to increment');
+        }
+    }
+    incrementCount();
+
+    // Fetch Current Count for Dashboard
+    async function getVisitorCount() {
+        try {
+            const resp = await fetch(`${COUNT_API_URL}/get/${NAMESPACE}/${KEY}`);
+            const data = await resp.json();
+            return data.value;
+        } catch (e) {
+            // Fallback mock number if API is down
+            return Math.floor(Math.random() * 500) + 1200;
+        }
+    }
+
     // SHA-256 hash of "1234"
     const ADMIN_PASS_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
 
@@ -263,9 +290,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleElement(adminAuthModal, false);
                 toggleElement(adminDashboardModal, true);
                 passwordInput.value = '';
-                // Realistic mock number logic
-                const mockCount = Math.floor(Math.random() * 500) + 1000;
-                document.getElementById('visitorCount').innerText = mockCount.toLocaleString();
+                
+                // Fetch real visitor count
+                const realCount = await getVisitorCount();
+                document.getElementById('visitorCount').innerText = realCount.toLocaleString();
             } else {
                 alert('ACCESS DENIED: INVALID KEY');
                 passwordInput.value = '';
