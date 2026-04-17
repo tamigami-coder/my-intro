@@ -133,10 +133,13 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
 }
 
 /* Modal styles for brutalism */
-#completion-modal.show {
+#completion-modal.show,
+#adminAuthModal.show,
+#adminDashboardModal.show {
     opacity: 1;
     pointer-events: auto;
 }
+
 
 /* Scroll Down Indicator Animation */
 @keyframes brutal-bounce {

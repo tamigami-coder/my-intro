@@ -177,13 +177,103 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Language
     setLanguage(currentLang);
 
-    if (langToggle) {
-        langToggle.addEventListener('click', () => {
-            setLanguage(currentLang === 'jp' ? 'en' : 'jp');
+    // --- [5. Admin Panel Logic] ---
+    const adminMenuBtn = document.getElementById('adminMenuBtn');
+    const adminSidebar = document.getElementById('adminSidebar');
+    const closeSidebar = document.getElementById('closeSidebar');
+    const goToAdminBtn = document.getElementById('goToAdminBtn');
+    const adminAuthModal = document.getElementById('adminAuthModal');
+    const cancelAuth = document.getElementById('cancelAuth');
+    const submitAuth = document.getElementById('submitAuth');
+    const adminDashboardModal = document.getElementById('adminDashboardModal');
+    const closeDashboard = document.getElementById('closeDashboard');
+    const logoutAdmin = document.getElementById('logoutAdmin');
+    const passwordInput = document.getElementById('adminPasswordInput');
+
+    // SHA-256 hash of "1234"
+    const ADMIN_PASS_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
+
+    async function sha256(message) {
+        const msgBuffer = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+    }
+
+    function toggleElement(el, show) {
+        if (!el) return;
+        if (show) {
+            el.classList.add('show');
+            el.style.opacity = '1';
+            el.style.pointerEvents = 'auto';
+        } else {
+            el.classList.remove('show');
+            el.style.opacity = '0';
+            el.style.pointerEvents = 'none';
+        }
+    }
+
+    // Sidebar Toggles
+    if (adminMenuBtn) {
+        adminMenuBtn.addEventListener('click', () => {
+            adminSidebar.style.transform = 'translateX(0)';
+        });
+    }
+
+    if (closeSidebar) {
+        closeSidebar.addEventListener('click', () => {
+            adminSidebar.style.transform = 'translateX(100%)';
+        });
+    }
+
+    // Auth Modal Toggles
+    if (goToAdminBtn) {
+        goToAdminBtn.addEventListener('click', () => {
+            adminSidebar.style.transform = 'translateX(100%)';
+            toggleElement(adminAuthModal, true);
+            passwordInput.focus();
+        });
+    }
+
+    if (cancelAuth) {
+        cancelAuth.addEventListener('click', () => {
+            toggleElement(adminAuthModal, false);
+            passwordInput.value = '';
+        });
+    }
+
+    // Auth Submission
+    if (submitAuth) {
+        submitAuth.addEventListener('click', async () => {
+            const input = passwordInput.value;
+            const hashedInput = await sha256(input);
             
-            // Glitch effect on toggle
-            langToggle.style.animation = 'glitch 0.2s linear';
-            setTimeout(() => langToggle.style.animation = '', 200);
+            if (hashedInput === ADMIN_PASS_HASH) {
+                toggleElement(adminAuthModal, false);
+                toggleElement(adminDashboardModal, true);
+                passwordInput.value = '';
+                // Realistic mock number logic
+                const mockCount = Math.floor(Math.random() * 500) + 1000;
+                document.getElementById('visitorCount').innerText = mockCount.toLocaleString();
+            } else {
+                alert('ACCESS DENIED: INVALID KEY');
+                passwordInput.value = '';
+            }
+        });
+    }
+
+    // Dashboard Close / Logout
+    if (closeDashboard) {
+        closeDashboard.addEventListener('click', () => {
+            toggleElement(adminDashboardModal, false);
+        });
+    }
+
+    if (logoutAdmin) {
+        logoutAdmin.addEventListener('click', () => {
+            toggleElement(adminDashboardModal, false);
+            showNotification('LOGGED OUT');
         });
     }
 });
