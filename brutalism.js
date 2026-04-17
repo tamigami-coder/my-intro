@@ -343,22 +343,32 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(styleTag);
     }
 
-    let isTerminalOpen = true;
-
     // ターミナルの開閉トグル
+    let isTerminalOpen = false; // 初期状態を「閉じている」に設定
+
     if (toggleBtn && aiTerminal) {
-        // 初期状態の遷移設定
-        aiTerminal.style.transition = 'transform 0.3s ease, left 0.3s ease, top 0.3s ease, bottom 0.3s ease';
+        // 初期状態で格納する関数
+        const setInitialCollapsedState = () => {
+            aiTerminal.style.left = '1.5rem';
+            aiTerminal.style.top = 'auto';
+            aiTerminal.style.bottom = '1.5rem';
+            aiTerminal.style.transform = `translateY(calc(100% - ${termHeader.offsetHeight}px))`;
+            toggleBtn.innerText = '+';
+        };
+        
+        // 遷移を設定する前に初期状態を適用（ロード時のアニメーションを防止）
+        setInitialCollapsedState();
+
+        // わずかに遅らせてから遷移アニメーションを有効化
+        setTimeout(() => {
+            if(aiTerminal) aiTerminal.style.transition = 'transform 0.3s ease, left 0.3s ease, top 0.3s ease, bottom 0.3s ease';
+        }, 100);
 
         toggleBtn.addEventListener('click', (e) => {
             e.stopPropagation(); // ドラッグ開始を防ぐ
             if (isTerminalOpen) {
                 // 左下に格納する
-                aiTerminal.style.left = '1.5rem';
-                aiTerminal.style.top = 'auto';
-                aiTerminal.style.bottom = '1.5rem';
-                aiTerminal.style.transform = `translateY(calc(100% - ${termHeader.offsetHeight}px))`;
-                toggleBtn.innerText = '+';
+                setInitialCollapsedState();
             } else {
                 // 開く（左下で開く）
                 aiTerminal.style.transform = 'translateY(0)';
