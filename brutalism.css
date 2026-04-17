@@ -194,19 +194,20 @@ a, button, .cursor-pointer, .brutal-button, .secret-fragment {
     transform: translateY(0);
 }
 
-/* Language Toggle Button */
-.lang-toggle {
-    transition: all 0.2s ease;
+/* Language Toggle Button - Integrated */
+#langToggle {
+    cursor: pointer !important;
 }
 
-@media (min-width: 768px) {
-    .lang-toggle {
-        font-size: 1rem;
-        width: 80px;
-    }
+.lang-display span {
+    padding: 0 4px;
+    border: 1px solid transparent;
 }
 
-.lang-toggle:hover {
-    transform: scale(1.1) rotate(5deg);
+.lang-display span.active {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
 }
+
 

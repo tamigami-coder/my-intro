@@ -17,16 +17,20 @@
 
     <!-- Header / Nav -->
     <header class="fixed top-6 right-6 md:top-10 md:right-10 z-50">
-        <nav class="brutal-box px-4 py-2 flex gap-4 text-sm md:text-base font-black uppercase tracking-widest bg-[#ffeb3b]">
+        <nav class="brutal-box px-4 py-2 flex items-center gap-4 text-xs md:text-base font-black uppercase tracking-widest bg-[#ffeb3b]">
             <a href="#about" class="hover:underline decoration-4 underline-offset-4" data-jp="Identity" data-en="Identity">Identity</a>
             <a href="#ai-vision" class="hover:underline decoration-4 underline-offset-4" data-jp="Vision" data-en="Vision">Vision</a>
             <a href="#goals" class="hover:underline decoration-4 underline-offset-4" data-jp="Target" data-en="Target">Target</a>
+            
+            <!-- Integrated Language Toggle -->
+            <div class="border-l-2 border-black h-4 ml-1"></div>
+            <button id="langToggle" class="hover:scale-110 transition-transform duration-100 flex items-center">
+                <span data-jp="JP/EN" data-en="JP/EN" class="sr-only">Language</span>
+                <div class="lang-display flex gap-1 text-[10px] md:text-sm">
+                    <!-- JS fills this -->
+                </div>
+            </button>
         </nav>
-
-        <!-- Language Toggle -->
-        <button id="langToggle" class="lang-toggle brutal-button p-3 text-lg leading-none mt-4 md:mt-2 md:absolute md:top-0 md:-left-24 bg-white hover:bg-black hover:text-white">
-            <span class="lang-text font-black">JP/EN</span>
-        </button>
     </header>
 
     <main class="max-w-5xl mx-auto px-4 pt-32 pb-40 relative z-10 flex flex-col gap-32">

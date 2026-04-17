@@ -161,14 +161,15 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('lang', lang);
         
         // Visual feedback on button
-        if(langToggle) {
-            const jpStyle = lang === 'jp' ? 'bg-black text-white px-1' : 'opacity-40';
-            const enStyle = lang === 'en' ? 'bg-black text-white px-1' : 'opacity-40';
+        const langDisplay = langToggle?.querySelector('.lang-display');
+        if(langDisplay) {
+            const jpClass = lang === 'jp' ? 'active' : 'opacity-40';
+            const enClass = lang === 'en' ? 'active' : 'opacity-40';
             
-            langToggle.innerHTML = `
-                <span class="${jpStyle}">JP</span>
-                <span class="mx-1">/</span>
-                <span class="${enStyle}">EN</span>
+            langDisplay.innerHTML = `
+                <span class="${jpClass}">JP</span>
+                <span class="opacity-20">/</span>
+                <span class="${enClass}">EN</span>
             `;
         }
     }
