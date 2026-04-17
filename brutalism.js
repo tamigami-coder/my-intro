@@ -376,7 +376,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (termHeader && aiTerminal) {
         termHeader.addEventListener('mousedown', (e) => {
             if(e.target === toggleBtn) return;
-            if(!isTerminalOpen) return; // 閉じているときはドラッグ不可
+            
+            // 閉じている状態でヘッダーを掴んだら、自動的に開く（出す）
+            if(!isTerminalOpen) {
+                isTerminalOpen = true;
+                aiTerminal.style.transform = 'translateY(0)';
+                toggleBtn.innerText = '-';
+            }
 
             isDragging = true;
             aiTerminal.style.transition = 'none'; // ドラッグ中はアニメーションをオフにして追従性を上げる
